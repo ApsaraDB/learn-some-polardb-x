@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: sysbench-point-select-k-test
+  name: sysbench-oltp-test
   namespace: default
 spec:
   backoffLimit: 0
@@ -9,7 +9,7 @@ spec:
     spec:
       restartPolicy: Never
       containers:
-        - name: sysbench-point-select-k
+        - name: sysbench-oltp
           image: severalnines/sysbench
           env:
             - name: POLARDB_X_USER
@@ -40,6 +40,5 @@ spec:
             - --mysql-ignore-errors=all
             - --num-threads=8
             - --time=3600
-            - --random_points=1
-            - /usr/share/sysbench/tests/include/oltp_legacy/select_random_points.lua
+            - /usr/share/sysbench/tests/include/oltp_legacy/oltp.lua
             - run
