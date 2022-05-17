@@ -1,0 +1,64 @@
+apiVersion: polardbx.aliyun.com/v1
+kind: PolarDBXCluster
+metadata:
+  name: polardb-x
+spec:
+  topology:
+    nodes:
+      cdc:
+        replicas: 1
+        template:
+          resources:
+            limits:
+              cpu: "2"
+              memory: 4Gi
+            requests:
+              cpu: 100m
+              memory: 500Mi
+      cn:
+        replicas: 1
+        template:
+          resources:
+            limits:
+              cpu: "4"
+              memory: 8Gi
+            requests:
+              cpu: 100m
+              memory: 1Gi
+      dn:
+        replicas: 1
+        template:
+          engine: galaxy
+          hostNetwork: true
+          resources:
+            limits:
+              cpu: "8"
+              memory: 16Gi
+            requests:
+              cpu: 100m
+              memory: 500Mi
+      gms:
+        template:
+          engine: galaxy
+          hostNetwork: true
+          resources:
+            limits:
+              cpu: "2"
+              memory: 4Gi
+            requests:
+              cpu: 100m
+              memory: 500Mi
+          serviceType: ClusterIP
+    rules:
+      components:
+        dn:
+          nodeSets:
+          - name: single
+            replicas: 1
+            role: Candidate
+        gms:
+          nodeSets:
+          - name: single
+            replicas: 1
+            role: Candidate
+  upgradeStrategy: RollingUpgrade
