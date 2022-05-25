@@ -118,7 +118,7 @@ public class XCanalCHDemo {
             System.out.println(column.getName() + " : " + column.getValue() + "    update=" + column.getUpdated());
             nameColumnMap.put(column.getName(), column);
         }
-        String sql = "INSERT INTO test(id, name) values(" + nameColumnMap.get("id").getValue() + ",\"" + nameColumnMap.get("name").getValue() + "\")";
+        String sql = "INSERT INTO test(id, name) values(" + nameColumnMap.get("id").getValue() + ",'" + nameColumnMap.get("name").getValue() + "')";
         try {
             statement.executeUpdate(sql);
             System.out.println("SQL done: " + sql);
