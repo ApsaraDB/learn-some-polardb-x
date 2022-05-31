@@ -1,0 +1,28 @@
+version: v1
+type: polardbx
+cluster:
+  name: pxc_test
+  gms:
+    image: polardbx/galaxyengine:latest
+    host_group: [127.0.0.1]
+  cn:
+    image: polardbx/galaxysql:latest
+    replica: 1
+    nodes:
+      - host: 127.0.0.1
+    resources:
+      mem_limit: 16G
+  dn:
+    image: polardbx/galaxyengine:latest
+    replica: 1
+    nodes:
+      - host_group: [127.0.0.1]
+    resources:
+      mem_limit: 16G
+  cdc:
+    image: polardbx/galaxycdc:latest
+    replica: 1
+    nodes:
+      - host: 127.0.0.1
+    resources:
+      mem_limit: 16G

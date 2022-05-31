@@ -8,6 +8,7 @@
 * [跟我学：如何在 PolarDB-X 中优化慢 SQL](https://developer.aliyun.com/live/248707)
 * [跟我学：用 PolarDB-X + Flink 搭建实时数据大屏](https://developer.aliyun.com/live/248797)
 * [跟我学：用 PolarDB-X 搭建一个高可用系统](https://developer.aliyun.com/live/248893)
+* [跟我学：PolarDB-X Replica 原理和使用](https://developer.aliyun.com/live/249064)
 
 该直播课程通过钉钉群直播、B站直播和阿里云开发者社区直播等多种方式进行。
 
